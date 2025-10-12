@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DADA Studio | Creative Day</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+</head>
+<body id="top">
+
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content fade-section">
+      <h1>DADA Creative Day</h1>
+      <p>One day. Everything your brand needs to look world-class.</p>
+      <a href="#packages" class="cta">Book Your Creative Day</a>
+    </div>
+  </section>
+
+  <section id="packages" class="packages fade-section">
+    <h2>Choose Your Experience</h2>
+
+    <div class="package">
+      <h3>STILLS EXPERIENCE</h3>
+      <p class="tagline">The foundation every brand needs.</p>
+      <p>Perfect for startups, tech companies, and creative teams who need fresh, high-end imagery for websites, PR, and social media.</p>
+      <ul>
+        <li>1 full production day on location</li>
+        <li>Portraits of executives and employees (10–20 people)</li>
+        <li>Lifestyle & team shots (meetings, workspace, candid interactions)</li>
+        <li>Office & environmental photography</li>
+        <li>40–60 fully edited photos, ready for digital use</li>
+        <li>Delivery within 3 business days</li>
+      </ul>
+      <p class="price">Starting at $3,500–$4,500</p>
+    </div>
+
+    <div class="package">
+      <h3>STILLS + VIDEO EXPERIENCE</h3>
+      <p class="tagline">Your full brand story — in one day.</p>
+      <p>Perfect for companies that want both professional photography and cinematic storytelling assets for digital campaigns, websites, and employer branding.</p>
+      <ul>
+        <li>Everything from the Stills Experience</li>
+        <li>On-site video interviews with executives or clients</li>
+        <li>B-roll footage of office and team culture</li>
+        <li>3–5 edited short video segments (30–60 sec each)</li>
+        <li>Color grading and audio cleanup</li>
+        <li>Delivery within 7 business days</li>
+      </ul>
+      <p class="price">Starting at $6,500–$7,500</p>
+    </div>
+  </section>
+
+  <section class="cta-section fade-section">
+    <h2>Ready to create your brand’s next chapter?</h2>
+    <a href="#contact" class="cta">Book Your Creative Day</a>
+  </section>
+
+  <section id="contact" class="contact fade-section">
+    <h2>Get in Touch</h2>
+    <p>We’d love to hear from you. Tell us about your company, your goals, or your next big idea.</p>
+    <form action="https://formspree.io/f/xvgwwney" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="_replyto" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit" class="cta">Send Message</button>
+    </form>
+  </section>
+
+  <footer class="fade-section">
+    <p>© 2025 DADA Studio. All rights reserved.</p>
+  </footer>
+
+  <button id="backToTop">↑</button>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll(".fade-section").forEach(el => observer.observe(el));
+
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      backToTop.classList.toggle("show", window.scrollY > 300);
+    });
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>

@@ -1,88 +1,207 @@
-<section id="packages" class="section fade-section">
-  <div class="container">
-    <div class="section-heading">
-      <p class="eyebrow">Packages</p>
-      <h2>Choose your creative day.</h2>
-      <p>
-        Built for startups, tech companies, and growing teams that need high-quality brand assets, without stretching production across multiple shoot days.
-      </p>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DADA Studio | Creative Day</title>
 
-    <div class="cards two-cards">
+<style>
+:root {
+  --bg: #050505;
+  --text: #ffffff;
+  --muted: rgba(255,255,255,0.65);
+}
 
-      <article class="card">
-        <h3>Stills Experience</h3>
-        <p class="card-price">Starting at $3,500–$4,500</p>
-        <p class="card-intro">
-          A clean, professional visual foundation for your brand.
-        </p>
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial;
+  background: var(--bg);
+  color: var(--text);
+}
 
-        <div class="card-block">
-          <p class="label">For</p>
-          <p>Websites, PR, social media, hiring, and internal use.</p>
-        </div>
+/* HERO */
+.hero {
+  position: relative;
+  height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
-        <div class="card-block">
-          <p class="label">Includes</p>
-          <ul>
-            <li>Full production day on location</li>
-            <li>Executive and team portraits (10–20 people)</li>
-            <li>Lifestyle and workspace photography</li>
-            <li>Art direction for consistent brand visuals</li>
-          </ul>
-        </div>
+.hero img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-        <div class="card-block">
-          <p class="label">Delivered</p>
-          <ul>
-            <li>40–60 fully edited photos</li>
-            <li>Ready for web, PR, and social</li>
-            <li>Organized gallery delivery</li>
-            <li>Delivered within 3 business days</li>
-          </ul>
-        </div>
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
 
-        <button class="choose-btn" data-package="Stills Experience">Check availability</button>
-        <p class="micro-copy">A strong starting point for brands that need clarity and consistency.</p>
-      </article>
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
 
-      <article class="card featured">
-        <div class="badge">Most Popular</div>
-        <h3>Stills + Video Experience</h3>
-        <p class="card-price">Starting at $6,500–$7,500</p>
-        <p class="card-intro">
-          Turn your brand into a story, not just images.
-        </p>
+.hero h1 {
+  font-size: 72px;
+  letter-spacing: -2px;
+  margin: 0;
+}
 
-        <div class="card-block">
-          <p class="label">For</p>
-          <p>Campaigns, websites, founder storytelling, employer branding, and marketing.</p>
-        </div>
+.hero p {
+  margin-top: 20px;
+  font-size: 20px;
+  color: var(--muted);
+}
 
-        <div class="card-block">
-          <p class="label">Includes</p>
-          <ul>
-            <li>Everything from Stills Experience</li>
-            <li>On-site video interviews with founders, team, or clients</li>
-            <li>B-roll of culture, environment, and workflow</li>
-            <li>Video capture designed for storytelling</li>
-          </ul>
-        </div>
+.cta {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 28px;
+  background: white;
+  color: black;
+  border-radius: 999px;
+  text-decoration: none;
+}
 
-        <div class="card-block">
-          <p class="label">Delivered</p>
-          <ul>
-            <li>40–60 edited photos</li>
-            <li>3–5 short video segments (30–60 sec each)</li>
-            <li>Color grading and audio cleanup</li>
-            <li>Delivered within 7 business days</li>
-          </ul>
-        </div>
+/* SECTION */
+.section {
+  padding: 120px 20px;
+  text-align: center;
+}
 
-        <button class="choose-btn" data-package="Stills + Video Experience">Check availability</button>
-        <p class="micro-copy">Best for teams that want both strong visuals and narrative content.</p>
-      </article>
+.section h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
 
-    </div>
+.section p {
+  color: var(--muted);
+}
+
+/* CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 30px;
+  max-width: 1000px;
+  margin: 60px auto 0;
+}
+
+.card {
+  padding: 40px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  text-align: left;
+}
+
+.featured {
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.card h3 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.price {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.card ul {
+  margin-top: 20px;
+  padding-left: 20px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.card button {
+  margin-top: 30px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 999px;
+  border: none;
+  background: white;
+  color: black;
+  cursor: pointer;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 44px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="000202730010.jpg">
+  <div class="overlay"></div>
+
+  <div class="hero-content">
+    <h1>Creative Day</h1>
+    <p>One focused shoot. Everything your brand needs.</p>
+    <a href="#packages" class="cta">Explore Packages</a>
   </div>
 </section>
+
+<!-- PACKAGES -->
+<section id="packages" class="section">
+  <h2>Choose your creative day</h2>
+  <p>Built for companies that need high-quality content without multiple production days.</p>
+
+  <div class="cards">
+
+    <!-- STILLS -->
+    <div class="card">
+      <h3>Stills Experience</h3>
+      <div class="price">Starting at $3,500–$4,500</div>
+
+      <ul>
+        <li>Full production day</li>
+        <li>Executive + team portraits</li>
+        <li>Office & lifestyle photography</li>
+        <li>40–60 edited photos</li>
+        <li>Delivered in 3 days</li>
+      </ul>
+
+      <button>Check availability</button>
+    </div>
+
+    <!-- VIDEO -->
+    <div class="card featured">
+      <h3>Stills + Video</h3>
+      <div class="price">Starting at $6,500–$7,500</div>
+
+      <ul>
+        <li>Everything in stills</li>
+        <li>On-site interviews</li>
+        <li>B-roll & storytelling footage</li>
+        <li>3–5 short videos</li>
+        <li>Delivered in 7 days</li>
+      </ul>
+
+      <button>Check availability</button>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

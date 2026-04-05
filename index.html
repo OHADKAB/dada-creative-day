@@ -1,207 +1,613 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>DADA Studio | Creative Day</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DADA Studio | Creative Day</title>
 
-<style>
-:root {
-  --bg: #050505;
-  --text: #ffffff;
-  --muted: rgba(255,255,255,0.65);
-}
+  <style>
+    :root {
+      --bg: #050505;
+      --text: #ffffff;
+      --muted: rgba(255,255,255,0.68);
+      --panel: rgba(255,255,255,0.035);
+      --panel-2: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.09);
+      --border-strong: rgba(255,255,255,0.16);
+      --radius: 24px;
+      --shadow: 0 18px 40px rgba(0,0,0,0.18);
+      --max-width: 1240px;
+    }
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial;
-  background: var(--bg);
-  color: var(--text);
-}
+    * { box-sizing: border-box; }
 
-/* HERO */
-.hero {
-  position: relative;
-  height: 95vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
+    html { scroll-behavior: smooth; }
 
-.hero img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
 
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 900px;
-}
+    .container {
+      width: min(var(--max-width), calc(100% - 56px));
+      margin: 0 auto;
+    }
 
-.hero h1 {
-  font-size: 72px;
-  letter-spacing: -2px;
-  margin: 0;
-}
+    .narrow {
+      max-width: 820px;
+    }
 
-.hero p {
-  margin-top: 20px;
-  font-size: 20px;
-  color: var(--muted);
-}
+    .hero {
+      position: relative;
+      min-height: 94vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 88px 24px;
+      overflow: hidden;
+    }
 
-.cta {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 14px 28px;
-  background: white;
-  color: black;
-  border-radius: 999px;
-  text-decoration: none;
-}
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-/* SECTION */
-.section {
-  padding: 120px 20px;
-  text-align: center;
-}
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
 
-.section h2 {
-  font-size: 48px;
-  margin-bottom: 10px;
-}
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 980px;
+    }
 
-.section p {
-  color: var(--muted);
-}
+    .eyebrow {
+      margin: 0 0 12px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.52);
+    }
 
-/* CARDS */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 30px;
-  max-width: 1000px;
-  margin: 60px auto 0;
-}
+    .eyebrow.center {
+      text-align: center;
+    }
 
-.card {
-  padding: 40px;
-  border-radius: 24px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.1);
-  text-align: left;
-}
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(52px, 8vw, 100px);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      font-weight: 700;
+    }
 
-.featured {
-  border: 1px solid rgba(255,255,255,0.3);
-}
+    .hero-subtitle {
+      margin: 22px auto 0;
+      max-width: 760px;
+      font-size: 20px;
+      line-height: 1.45;
+      color: var(--muted);
+    }
 
-.card h3 {
-  font-size: 28px;
-  margin: 0;
-}
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 30px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      transition: transform 0.18s ease, opacity 0.18s ease;
+      cursor: pointer;
+    }
 
-.price {
-  margin-top: 10px;
-  font-size: 20px;
-}
+    .cta:hover {
+      transform: translateY(-1px);
+      opacity: 0.92;
+    }
 
-.card ul {
-  margin-top: 20px;
-  padding-left: 20px;
-  line-height: 1.6;
-  color: var(--muted);
-}
+    .section {
+      padding: 120px 0;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
 
-.card button {
-  margin-top: 30px;
-  width: 100%;
-  padding: 14px;
-  border-radius: 999px;
-  border: none;
-  background: white;
-  color: black;
-  cursor: pointer;
-}
+    .section-heading {
+      max-width: 760px;
+      margin: 0 auto 52px;
+      text-align: center;
+    }
 
-/* MOBILE */
-@media(max-width:900px){
-  .cards {
-    grid-template-columns: 1fr;
-  }
+    .section-heading h2,
+    .contact h2 {
+      margin: 0;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1;
+      letter-spacing: -0.045em;
+      font-weight: 700;
+    }
 
-  .hero h1 {
-    font-size: 44px;
-  }
-}
-</style>
+    .section-heading p,
+    .contact-subtitle {
+      margin: 18px auto 0;
+      max-width: 700px;
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+      max-width: 980px;
+      margin: 0 auto;
+      align-items: stretch;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      height: 100%;
+      padding: 36px;
+      border-radius: 28px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+      text-align: left;
+    }
+
+    .featured {
+      background: var(--panel-2);
+      border-color: var(--border-strong);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin-bottom: 18px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.11);
+      color: rgba(255,255,255,0.86);
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      font-weight: 650;
+    }
+
+    .card-price {
+      margin: 12px 0 0;
+      font-size: 24px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .card-intro {
+      margin: 18px 0 0;
+      font-size: 18px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .card-block {
+      margin-top: 26px;
+    }
+
+    .label {
+      margin: 0 0 10px;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.48);
+    }
+
+    .card-block p {
+      margin: 0;
+      font-size: 16px;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.55;
+    }
+
+    .card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(255,255,255,0.82);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .card li {
+      margin: 8px 0;
+    }
+
+    .card button {
+      margin-top: 30px;
+      width: 100%;
+    }
+
+    .micro-copy {
+      margin: 12px 0 0;
+      font-size: 13px;
+      line-height: 1.45;
+      text-align: center;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .about {
+      text-align: center;
+    }
+
+    .about h2 {
+      margin: 0;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1;
+      letter-spacing: -0.045em;
+      font-weight: 700;
+    }
+
+    .about-text {
+      margin: 18px auto 0;
+      max-width: 760px;
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .cta-section {
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      margin: 0;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1;
+      letter-spacing: -0.045em;
+      font-weight: 700;
+    }
+
+    .cta-section p {
+      margin: 18px auto 0;
+      max-width: 700px;
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .contact-wrap {
+      max-width: 760px;
+    }
+
+    .contact h2 {
+      text-align: center;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 14px;
+      margin-top: 28px;
+      padding: 26px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.035);
+      border: 1px solid var(--border);
+    }
+
+    .form-row {
+      display: grid;
+      gap: 14px;
+    }
+
+    .two-col {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 16px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.025);
+      color: var(--text);
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(255,255,255,0.42);
+    }
+
+    textarea {
+      min-height: 160px;
+      resize: vertical;
+    }
+
+    select {
+      appearance: none;
+      background-image:
+        linear-gradient(45deg, transparent 50%, rgba(255,255,255,.6) 50%),
+        linear-gradient(135deg, rgba(255,255,255,.6) 50%, transparent 50%);
+      background-position: calc(100% - 20px) calc(50% - 2px), calc(100% - 15px) calc(50% - 2px);
+      background-size: 5px 5px, 5px 5px;
+      background-repeat: no-repeat;
+    }
+
+    .form-cta {
+      margin-top: 6px;
+      width: 100%;
+    }
+
+    .footer {
+      padding: 36px 20px 44px;
+      text-align: center;
+      color: rgba(255,255,255,0.42);
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    @media (max-width: 980px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 82vh;
+        padding: 72px 22px;
+      }
+
+      .hero-subtitle {
+        font-size: 17px;
+      }
+
+      .section {
+        padding: 88px 0;
+      }
+
+      .card {
+        padding: 26px;
+      }
+
+      .card h3 {
+        font-size: 28px;
+      }
+
+      .card-price {
+        font-size: 22px;
+      }
+
+      .card-intro,
+      .card-block p,
+      .card ul,
+      .section-heading p,
+      .about-text,
+      .cta-section p,
+      .contact-subtitle {
+        font-size: 15px;
+      }
+
+      .container {
+        width: min(var(--max-width), calc(100% - 32px));
+      }
+
+      .contact-form {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
+<body id="top">
 
-<body>
-
-<!-- HERO -->
-<section class="hero">
-  <img src="000202730010.jpg">
-  <div class="overlay"></div>
-
-  <div class="hero-content">
-    <h1>Creative Day</h1>
-    <p>One focused shoot. Everything your brand needs.</p>
-    <a href="#packages" class="cta">Explore Packages</a>
-  </div>
-</section>
-
-<!-- PACKAGES -->
-<section id="packages" class="section">
-  <h2>Choose your creative day</h2>
-  <p>Built for companies that need high-quality content without multiple production days.</p>
-
-  <div class="cards">
-
-    <!-- STILLS -->
-    <div class="card">
-      <h3>Stills Experience</h3>
-      <div class="price">Starting at $3,500–$4,500</div>
-
-      <ul>
-        <li>Full production day</li>
-        <li>Executive + team portraits</li>
-        <li>Office & lifestyle photography</li>
-        <li>40–60 edited photos</li>
-        <li>Delivered in 3 days</li>
-      </ul>
-
-      <button>Check availability</button>
+  <section class="hero">
+    <img src="000202730010.jpg" alt="Creative Day hero" class="hero-image" />
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <p class="eyebrow">DADA Studio</p>
+      <h1>Creative Day,<br />built for modern brands.</h1>
+      <p class="hero-subtitle">
+        A focused production day designed to give your company a strong, cohesive visual library across portraits, team moments, workspace imagery, and video storytelling.
+      </p>
+      <a href="#packages" class="cta">Explore packages</a>
     </div>
+  </section>
 
-    <!-- VIDEO -->
-    <div class="card featured">
-      <h3>Stills + Video</h3>
-      <div class="price">Starting at $6,500–$7,500</div>
+  <section id="packages" class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Packages</p>
+        <h2>Choose your creative day.</h2>
+        <p>
+          Built for startups, tech companies, and growing teams that need high-quality brand assets, without stretching production across multiple shoot days.
+        </p>
+      </div>
 
-      <ul>
-        <li>Everything in stills</li>
-        <li>On-site interviews</li>
-        <li>B-roll & storytelling footage</li>
-        <li>3–5 short videos</li>
-        <li>Delivered in 7 days</li>
-      </ul>
+      <div class="cards">
 
-      <button>Check availability</button>
+        <article class="card">
+          <h3>Stills Experience</h3>
+          <p class="card-price">Starting at $3,500–$4,500</p>
+          <p class="card-intro">
+            A clean, professional visual foundation for your brand.
+          </p>
+
+          <div class="card-block">
+            <p class="label">For</p>
+            <p>Websites, PR, social media, hiring, and internal use.</p>
+          </div>
+
+          <div class="card-block">
+            <p class="label">Includes</p>
+            <ul>
+              <li>Full production day on location</li>
+              <li>Executive and team portraits (10–20 people)</li>
+              <li>Lifestyle and workspace photography</li>
+              <li>Art direction for consistent brand visuals</li>
+            </ul>
+          </div>
+
+          <div class="card-block">
+            <p class="label">Delivered</p>
+            <ul>
+              <li>40–60 fully edited photos</li>
+              <li>Ready for web, PR, and social</li>
+              <li>Organized gallery delivery</li>
+              <li>Delivered within 3 business days</li>
+            </ul>
+          </div>
+
+          <button class="cta choose-btn" data-package="Stills Experience">Check availability</button>
+          <p class="micro-copy">A strong starting point for brands that need clarity and consistency.</p>
+        </article>
+
+        <article class="card featured">
+          <div class="badge">Most Popular</div>
+          <h3>Stills + Video Experience</h3>
+          <p class="card-price">Starting at $6,500–$7,500</p>
+          <p class="card-intro">
+            Turn your brand into a story, not just images.
+          </p>
+
+          <div class="card-block">
+            <p class="label">For</p>
+            <p>Campaigns, websites, founder storytelling, employer branding, and marketing.</p>
+          </div>
+
+          <div class="card-block">
+            <p class="label">Includes</p>
+            <ul>
+              <li>Everything from Stills Experience</li>
+              <li>On-site video interviews with founders, team, or clients</li>
+              <li>B-roll of culture, environment, and workflow</li>
+              <li>Video capture designed for storytelling</li>
+            </ul>
+          </div>
+
+          <div class="card-block">
+            <p class="label">Delivered</p>
+            <ul>
+              <li>40–60 edited photos</li>
+              <li>3–5 short video segments (30–60 sec each)</li>
+              <li>Color grading and audio cleanup</li>
+              <li>Delivered within 7 business days</li>
+            </ul>
+          </div>
+
+          <button class="cta choose-btn" data-package="Stills + Video Experience">Check availability</button>
+          <p class="micro-copy">Best for teams that want both strong visuals and narrative content.</p>
+        </article>
+
+      </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <section class="section about">
+    <div class="container narrow">
+      <p class="eyebrow center">About</p>
+      <h2>Built for brands that want to look sharper.</h2>
+      <p class="about-text">
+        DADA Studio creates visual content that feels clear, refined, and current. Founded in New York by photographer Ohad Kab, the studio works with modern companies to produce portraits, brand imagery, and story-driven content that elevates how they show up across digital and real-world touchpoints.
+      </p>
+    </div>
+  </section>
 
+  <section class="section cta-section">
+    <div class="container narrow">
+      <h2>Ready to build your next visual library?</h2>
+      <p>
+        A single well-planned shoot day can create months of stronger brand content.
+      </p>
+      <a href="#contact" class="cta">Check availability</a>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact">
+    <div class="container contact-wrap">
+      <p class="eyebrow center">Contact</p>
+      <h2>Check availability for your creative day</h2>
+      <p class="contact-subtitle">
+        Tell us a bit about your company, your timeline, and the kind of assets you need, and we’ll get back with the right setup.
+      </p>
+
+      <form action="https://formspree.io/f/xvgwwney" method="POST" class="contact-form">
+        <div class="form-row two-col">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="_replyto" placeholder="Your Email" required />
+        </div>
+
+        <div class="form-row">
+          <input type="text" name="company" placeholder="Company" />
+        </div>
+
+        <div class="form-row">
+          <select name="package" id="package" required>
+            <option value="" disabled selected>Which package are you interested in?</option>
+            <option value="Stills Experience">Stills Experience</option>
+            <option value="Stills + Video Experience">Stills + Video Experience</option>
+          </select>
+        </div>
+
+        <textarea name="message" rows="5" placeholder="Tell us about your company, your goals, and what kind of content you need" required></textarea>
+
+        <button type="submit" class="cta form-cta">Check availability</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 DADA Studio. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll(".choose-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const pkg = btn.getAttribute("data-package");
+        const select = document.getElementById("package");
+        if (select) select.value = pkg;
+        document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+      });
+    });
+  </script>
 </body>
 </html>
